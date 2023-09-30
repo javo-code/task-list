@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: random;
+  src: url('./Deep_Shadow.ttf');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.task-app {
+  height: 100vh;
+  background: #1b1b32;
+  color: #fff;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.title-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title{
+  font-family: random;
 }
+
+
+h1{
+  font-size: 30px;
+  color: #fff;
+}
+
+.task-main-container {
+  width: 600px;
+  min-height: 500px;
+  border-radius: 10px;
+  background: rgb(94, 106, 234);
+  color: #fff;
+}
+
+h2 {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-wrap: anywhere;
+    margin: 10px;
+    }
+
+
+
+

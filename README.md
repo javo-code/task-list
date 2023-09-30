@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+### Función addTask:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Recibe una tarea como parámetro, verifica si el campo de texto de la tarea no está vacío, quita los espacios en blanco iniciales y finales del campo de texto, crea una nueva matriz que incluye la tarea agregada al principio y actualiza el estado de la lista de tareas con la nueva versión.
 
-## Available Scripts
+1. `const [tasks, setTasks] = useState([]);`: Esta línea utiliza el hook de estado useState para declarar una variable de estado llamada tasks y una función setTasks para actualizar ese estado. Inicialmente, el valor del estado tasks se establece como una matriz vacía [].
 
-In the project directory, you can run:
+2. `const addTask = (task) => { ... }`: Esto declara una función llamada addTask que acepta un parámetro task.
 
-### `npm start`
+3. `console.log("tarea agregada"); console.log(task);`: Estas líneas imprimen en la consola el mensaje "tarea agregada" y el contenido de la variable task. Esto se utiliza para verificar y depurar el código.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4. `if (task.text.trim()) { ... }`: Esta línea verifica si el campo de texto de la tarea (task.text) no está vacío después de aplicar la función trim(), que elimina los espacios en blanco iniciales y finales. Esto ayuda a asegurarse de que no se agreguen tareas vacías a la lista.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+5. `task.text = task.text.trim();`: Si la tarea no está vacía, se utiliza trim() para eliminar los espacios en blanco iniciales y finales del campo de texto de la tarea. Esto actualiza la propiedad text de la tarea con la versión sin espacios en blanco.
 
-### `npm test`
+6. `const tasksActualized = [task, ...tasks];`: Se crea una nueva matriz llamada tasksActualized que contiene la tarea actual (task) agregada al principio de la matriz tasks existente. Se utiliza el operador spread (...) para descomponer la matriz tasks y agregar sus elementos a la nueva matriz.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+7. `setTasks(tasksActualized);`: Finalmente, se utiliza la función setTasks para actualizar el estado de la variable tasks con la nueva matriz tasksActualized. Esto reemplaza la matriz de tareas existente con la nueva versión que incluye la tarea agregada.
 
-### `npm run build`
+### Función "deleteTask":
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Elimina una tarea específica de una lista de tareas basándose en su ID y actualiza el estado de la lista de tareas con la versión filtrada sin la tarea eliminada.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Acepta un parámetro id que representa el identificador de una tarea. A continuación, realiza las siguientes acciones:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Declara una nueva variable llamada tasksActualized que almacenará una versión actualizada de la lista de tareas.
+2. Utiliza el método filter() en la matriz tasks para crear una nueva matriz tasksActualized que excluye la tarea con el ID especificado. El método filter() recorre cada elemento de la matriz tasks y devuelve un nuevo arreglo con los elementos que cumplen con la condición proporcionada. En este caso, se excluye la tarea que tiene el ID igual al valor del parámetro id.
+3. Finalmente, se utiliza la función setTasks (suponiendo que es una función proporcionada por un hook de estado) para actualizar el estado de la variable tasks con la nueva matriz tasksActualized. Esto significa que se reemplaza la matriz de tareas existente con la nueva versión filtrada que excluye la tarea con el ID especificado.
 
-### `npm run eject`
+### función finishTask:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Busca una tarea específica en la lista de tareas basándose en su ID, cambia el estado de su propiedad done y actualiza el estado de la lista de tareas con la versión actualizada.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Declara una nueva variable llamada tasksActualized que almacenará una versión actualizada de la lista de tareas.
+2. Utiliza el método map() en la matriz tasks para crear una nueva matriz tasksActualized que mapea cada tarea de la lista original y realiza una operación de transformación en cada una.
+3. Para cada tarea en la matriz original, se verifica si su id coincide con el valor del parámetro id especificado.
+4. Si la tarea tiene el mismo id, se cambia el estado de su propiedad done a su valor opuesto utilizando el operador de negación (!). Esto significa que se invierte el valor de done, es decir, si estaba true, ahora será false, y si estaba false, ahora será true.
+5. Después de realizar esta operación de cambio de estado, se devuelve la tarea actualizada.
+6. La función map() crea una nueva matriz con todas las tareas actualizadas, donde la tarea con el id especificado tendrá su propiedad done cambiada.
+7. Finalmente, se utiliza la función setTasks (suponiendo que es una función proporcionada por un hook de estado) para actualizar el estado de la variable tasks con la nueva matriz tasksActualized. Esto significa que se reemplaza la matriz de tareas existente con la nueva versión que tiene la tarea con el id especificado con su propiedad done actualizada.
